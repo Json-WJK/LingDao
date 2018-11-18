@@ -1,5 +1,5 @@
 <template>
-    <div class="skill">
+    <div class="skill" id="skill">
         <div class="bg-box">
             <h1>关于我们</h1>
             <div class="content">

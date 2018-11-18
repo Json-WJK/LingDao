@@ -1,5 +1,5 @@
 <template>
-    <div class="join">
+    <div class="join" id="join">
         <div class="bj-box">
             <h1 class="h_text">合作伙伴</h1>
             <div>

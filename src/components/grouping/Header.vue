@@ -9,12 +9,7 @@
                 </div>
             </div>
             <ul>
-                <li><span>主页</span></li>
-                <li><span>合作伙伴</span></li>
-                <li><span>解决方案</span></li>
-                <li><span>关于我们</span></li>
-                <li><span>业务范围</span></li>
-                <li><span>联系我们</span></li>
+                <li v-for="(item,i) in list" :key="i" @click="to(i)"><span>{{item}}</span></li>
             </ul>
         </div>
     </div>
@@ -23,8 +18,78 @@
     export default{
         data(){
             return{
-
+                list:["主页","合作伙伴","解决方案","关于我们","业务范围","联系我们"],
+                user:false,
             }
+        },
+        methods:{
+            to(i){
+                this.user=false
+                /*当前距离 */
+                //var p= window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+                clearInterval(toproll);
+                clearInterval(bottomroll)
+                var x;/*to终点 */ 
+                var toproll; //定时器
+                var bottomroll;//定时器
+                var slide  //滑动距离
+                /*需要滚动的距离 */
+                // var roll=p-x  
+                var work=document.getElementById("work").offsetTop
+                var join=document.getElementById("join").offsetTop
+                var overview=document.getElementById("overview").offsetTop
+                var skill=document.getElementById("skill").offsetTop
+                var work_h=document.getElementById("work").offsetHeight//最后一个元素的高度
+                var base=document.documentElement.clientHeight-work_h //到达底部距离
+                if(i==0) x=0
+                if(i==1) x=join
+                if(i==2) x=0
+                if(i==3) x=skill
+                if(i==4) x=work 
+                if(i==5) x=0
+                var p= window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop//当前屏幕高度
+                if(p==x) return
+                // console.log(p,x)
+                if(p>x){        //向上
+                    toproll=setInterval(() => {  
+                        if(this.user) clearInterval(toproll)
+                        p= window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop//当前屏幕高度
+                        slide=Math.floor(p-p/30);//每次减少  向上
+                        console.log(slide)
+                        window.scrollTo(0,slide)
+                        if(p<=x){
+                            clearInterval(toproll)
+                            window.scrollTo(0,x)//防止再次点击任然滚动
+                        }     
+                    },10); 
+                } 
+                else if(p<=x){      //向下
+                    bottomroll=setInterval(() => {
+                        if(this.user) clearInterval(bottomroll)
+                        p= window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop//当前屏幕高度
+                        slide=Math.floor(p+x/50)//每次减少  向下
+                        // console.log(slide)
+                        window.scrollTo(0,slide)
+                        // var bodyh=document.body.scrollHeight
+                        // var clienth=document.documentElement.clientHeight
+                        // var stoph=bodyh-clienth
+                        if(p>=x)
+                        {
+                            clearInterval(bottomroll)
+                            window.scrollTo(0,x)//防止再次点击任然滚动
+                        } 
+                    },10); 
+                } 
+            },
+            stop(){
+                this.user=true;
+            }
+        },
+        created(){
+            
+        },
+        mounted(){
+           window.addEventListener('mousewheel', this.stop, true);
         }
     }
 </script>

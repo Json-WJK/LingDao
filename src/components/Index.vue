@@ -6,6 +6,7 @@
         <Join></Join>
         <Skill></Skill>
         <Work></Work>
+        <Contact></Contact>
         <Footer></Footer>
     </div>
 </template>
@@ -17,6 +18,7 @@ import Overview from './grouping/Overview.vue'
 import Join from './grouping/Join.vue'
 import Skill from './grouping/Skill.vue'
 import Work from './grouping/Work.vue'
+import Contact from './grouping/Contact.vue'
     export default{
         components:{
             Header,
@@ -26,6 +28,7 @@ import Work from './grouping/Work.vue'
             Join,
             Skill,
             Work,
+            Contact,
         },
         data(){
             return{
@@ -40,12 +43,12 @@ import Work from './grouping/Work.vue'
                 var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
                 // sessionStorage.setItem(stop,scrollTop)
                 this.stop=scrollTop
-                console.log(this.stop)
+                // console.log(this.stop)
                 /************顶部栏 *****************/
                 var header=document.getElementById("header")
                 var header_h1=header.firstChild.firstChild.children[1].firstChild
                 var header_logo=document.querySelector(".logo>img")
-                console.log(header_logo)
+                // console.log(header_logo)
                 if(scrollTop>=50){
                     header.className="header header_scroll"
                     header_h1.className="header_h1"

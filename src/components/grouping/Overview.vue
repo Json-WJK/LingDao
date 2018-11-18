@@ -1,5 +1,5 @@
 <template>
-    <div class="overview">
+    <div class="overview" id="overview">
         <div>
             <div>
                 <img src="http://127.0.0.1:0808/LingDao/Icon_1.png" alt="">
@@ -44,13 +44,22 @@
         flex-wrap:wrap;
         text-align:center;
         color:#666;
-        padding: 2rem 0 ;
+        padding: 2rem 0;
     }
     .overview>div>div{
         width:30%;
         height:20rem;
         box-sizing:border-box;
         padding:4rem 0;
+        /* transform: scale(.5); */
+        transition:.5s;
+    }
+    .overview>div>div:hover{
+        width:30%;
+        height:20rem;
+        box-sizing:border-box;
+        padding:4rem 0;
+        transform: scale(1)
     }
     .overview>div>div>p{
         font-size:1.3rem;
