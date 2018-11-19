@@ -67,6 +67,8 @@
         color:#fff;
         margin:0 auto;
         transition:.5s;
+        transform:translate(0,-300px);
+        opacity: 0;
     }
     .tbg>.bg>div>.description>h1{
         font-size:4rem;

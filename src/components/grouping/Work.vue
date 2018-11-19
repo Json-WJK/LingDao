@@ -3,19 +3,19 @@
         <h1>业务范围</h1>
         <div class="content">
             <div>
-                <div>100</div>
+                <div></div>
                 <div>满意度</div>
             </div>
             <div>
-                <div>30</div>
+                <div></div>
                 <div>团队构成</div>
             </div>
             <div>
-                <div>1360</div>
+                <div></div>
                 <div>完成项目</div>
             </div>
             <div>
-                <div>200</div>
+                <div></div>
                 <div>服务企业</div>
             </div>
         </div>
@@ -50,6 +50,10 @@
         text-align: center;
         color:#fff;
         font-size:3.5rem;
+        
+    }
+    .work>.content>div>div:nth-child(1){
+        height:66px;
     }
     .work>.content>div>div:nth-child(2){
         font-size:1.7rem;

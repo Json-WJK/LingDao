@@ -4,6 +4,7 @@
         <Tbg></Tbg>
         <Overview></Overview>
         <Join></Join>
+        <Scheme></Scheme>
         <Skill></Skill>
         <Work></Work>
         <Contact></Contact>
@@ -16,6 +17,7 @@ import Footer from './grouping/Footer.vue'
 import Tbg from './grouping/Tbg.vue'
 import Overview from './grouping/Overview.vue'
 import Join from './grouping/Join.vue'
+import Scheme from './grouping/Scheme.vue'
 import Skill from './grouping/Skill.vue'
 import Work from './grouping/Work.vue'
 import Contact from './grouping/Contact.vue'
@@ -26,6 +28,7 @@ import Contact from './grouping/Contact.vue'
             Tbg,
             Overview,
             Join,
+            Scheme,
             Skill,
             Work,
             Contact,
@@ -35,11 +38,8 @@ import Contact from './grouping/Contact.vue'
                 stop:"",
             }
         },
-        mounted() {
-            window.addEventListener('scroll', this.handleScroll, true)
-        },
         methods: {
-            handleScroll() {
+            handleScroll(){
                 var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
                 // sessionStorage.setItem(stop,scrollTop)
                 this.stop=scrollTop
@@ -59,7 +59,27 @@ import Contact from './grouping/Contact.vue'
                      header_logo.setAttribute("src","http://127.0.0.1:0808/LingDao/伶道最终方白.png")
                 }
             }
-        }
+        },
+        mounted() {
+            window.addEventListener('scroll', this.handleScroll, true)
+            /*提前执行 */
+            var Join=document.getElementById("join").children[0].children[1].children
+            for(var spans=0;spans<Join.length;spans++){
+                if(spans==0||spans==3||spans==6)
+                Join[spans].style.transform="translateX(-200px)"
+                if(spans==2||spans==5||spans==8)
+                Join[spans].style.transform="translateX(200px)"
+                if(spans==1)
+                Join[spans].style.transform="translateY(-200px)"
+                if(spans==7)
+                Join[spans].style.transform="translateY(200px)"
+            }
+            setTimeout(() => {
+                for(var item of Join){
+                    item.style.transition="1.3s"
+                }
+            }, 200);
+        },
 
     }
 </script>

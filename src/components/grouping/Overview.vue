@@ -52,14 +52,8 @@
         box-sizing:border-box;
         padding:4rem 0;
         /* transform: scale(.5); */
-        transition:.5s;
-    }
-    .overview>div>div:hover{
-        width:30%;
-        height:20rem;
-        box-sizing:border-box;
-        padding:4rem 0;
-        transform: scale(1)
+        transition:1.5s;
+        transform: scale(0);
     }
     .overview>div>div>p{
         font-size:1.3rem;

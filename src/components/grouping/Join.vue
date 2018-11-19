@@ -57,6 +57,7 @@
     .join>.bj-box>div>span{
         display: inline-block;
         width:33%;
+        opacity:0;
     }
     .join>.bj-box>div>span>img{
         width:100%;

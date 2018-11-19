@@ -49,9 +49,15 @@
     .skill .content>div:nth-child(1){
         width:65%;
         line-height:2rem;  
+        transition:1.5s;
+        transform:translateX(-200px);
+        opacity: 0;
     }
     .skill .content>div:nth-child(2){
         width:30%;
+        transition:1.5s;
+        transform:translateX(200px);
+        opacity: 0;
     }
     .skill .content ul{
         line-height:3rem;
