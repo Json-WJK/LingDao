@@ -12,6 +12,9 @@
                 <li v-for="(item,i) in list" :key="i" @click="to(i)"><span>{{item}}</span></li>
             </ul>
         </div>
+        <div class="orientation">
+            <img src="http://127.0.0.1:0808/LingDao/下拉菜单.png" alt="">
+        </div>
         <div class="totop" @click="to(0)">
             <img src="http://127.0.0.1:0808/LingDao/上箭头大.png" alt=""><span>TOP</span>
         </div>
@@ -38,7 +41,6 @@
                 /*需要滚动的距离 */  /*公用变量部分 */
                 // var roll=p-x  
                 var logo=document.querySelectorAll(".description")[0]
-                console.log(logo)
                 var overview=document.getElementById("overview").offsetTop
                 var join=document.getElementById("join").offsetTop
                 var scheme=document.getElementById("scheme").offsetTop
@@ -194,6 +196,7 @@
                         if(p<=x){
                             clearInterval(this.toproll)
                             window.scrollTo(0,x)//防止再次点击任然滚动
+                            this.stop()
                         }     
                     },10); 
                 } 
@@ -207,10 +210,11 @@
                         // var bodyh=document.body.scrollHeight
                         // var clienth=document.documentElement.clientHeight
                         // var stoph=bodyh-clienth
-                        if(p>=x)
+                        if(p>=x||p>=document.documentElement.offsetHeight - window.innerHeight)//||为防止最后一个元素不触发
                         {
                             clearInterval(this.bottomroll)
                             window.scrollTo(0,x)//防止再次点击任然滚动
+                            this.stop()
                         } 
                     },10); 
                 } 
@@ -290,6 +294,21 @@
     border-bottom:2px solid #37cadd;
     color:#37cadd;
 }
+.orientation{
+    color:#37cadd;
+    position:fixed;
+    bottom:7rem;
+    right:5rem;
+    cursor: pointer;
+    transition:.5s;
+    width:1rem;
+    height:1rem;
+}
+.orientation>img{
+    width:3rem;
+    height:1.5rem;
+}
+
 .totop{
     color:#37cadd;
     position:fixed;
@@ -307,4 +326,33 @@
     width:1rem;
     height:1rem;
 }
+
+
+/*******************响应式分割线*******************/
+@media screen and (max-width:1000px){
+.header>.bar>ul{
+    line-height:5rem;
+    width:100%;
+    font-weight:bold;
+    position:fixed;
+    bottom:15%;
+    display: block;
+}   
+.header>.bar>ul>li>span{
+    display:block;
+    height:4rem;
+    cursor:pointer;
+    text-align:center;
+    width:70%;
+    margin:0 auto;
+    border-bottom:2px solid #37cadd;
+    color:#37cadd;
+    background: rgba(255,255,255,0.7);
+    box-shadow:0rem 0rem 0rem .1rem #37cadd;
+}
+.header>.bar>ul>li>span:hover{
+    color:#555;
+}
+}
+
 </style>
