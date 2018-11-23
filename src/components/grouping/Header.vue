@@ -8,12 +8,12 @@
                     <span>北京伶道科技有限公司</span>
                 </div>
             </div>
-            <ul>
+            <ul :class="isblock==true?'block':'none'">
                 <li v-for="(item,i) in list" :key="i" @click="to(i)"><span>{{item}}</span></li>
             </ul>
         </div>
         <div class="orientation">
-            <img src="http://127.0.0.1:0808/LingDao/下拉菜单.png" alt="">
+            <img src="http://127.0.0.1:0808/LingDao/下拉菜单.png" alt="" @click="block">
         </div>
         <div class="totop" @click="to(0)">
             <img src="http://127.0.0.1:0808/LingDao/上箭头大.png" alt=""><span>TOP</span>
@@ -28,10 +28,15 @@
                 user:false,
                 bottomroll:null,
                 toproll:null,
-                isalready:false,
+                isalready:false,//控制数字变化定时器是否已经执行
+                isblock:false,//是否显示导航
             }
         },
         methods:{
+            block(){
+                this.isblock=!this.isblock
+                console.log(this.isblock)
+            },
             to(i){
                 this.user=false
                 clearInterval(this.bottomroll)
@@ -294,21 +299,24 @@
     border-bottom:2px solid #37cadd;
     color:#37cadd;
 }
+/*汉堡包*/
 .orientation{
     color:#37cadd;
     position:fixed;
-    bottom:7rem;
+    top:1.5rem;
     right:5rem;
     cursor: pointer;
     transition:.5s;
     width:1rem;
     height:1rem;
+    display: none;
 }
 .orientation>img{
     width:3rem;
     height:1.5rem;
 }
 
+/*跳转至顶部*/
 .totop{
     color:#37cadd;
     position:fixed;
@@ -335,8 +343,7 @@
     width:100%;
     font-weight:bold;
     position:fixed;
-    bottom:15%;
-    display: block;
+    top:30%;
 }   
 .header>.bar>ul>li>span{
     display:block;
@@ -352,6 +359,15 @@
 }
 .header>.bar>ul>li>span:hover{
     color:#555;
+}
+.orientation{
+    display: block;
+}
+.block{
+    display:block !important;
+}
+.none{
+    display:none !important;
 }
 }
 
